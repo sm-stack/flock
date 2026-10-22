@@ -34,7 +34,6 @@ use {
     crate::pcs::LOG_PACKING, crate::zerocheck::PaddingSpec, std::env::var_os, std::time::Instant,
 };
 
-#[cfg(target_arch = "aarch64")]
 use crate::zerocheck::SPARSE_TAIL_GATE;
 use crate::{
     challenger::Challenger,
