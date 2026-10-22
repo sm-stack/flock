@@ -112,11 +112,11 @@ jobs:
 
       # These large ignored tests are architecture-independent. Run them once,
       # sequentially, on the provisioned x86_64 runner.
-      - name: Hash DSL exact compatibility and proofs
+      - name: Hash DSL reference checks and proofs
         if: matrix.arch == 'x86_64-avx512'
         shell: bash
         run: |
-          cargo test --release -p flock-prover --lib r1cs_hashes::sha2_dsl::tests::dsl_matches_legacy_relation_and_witness -- --ignored --exact
+          cargo test --release -p flock-prover --lib r1cs_hashes::sha2_dsl::tests::dsl_outputs_and_walks_match_reference -- --ignored --exact
           cargo test --release -p flock-prover --lib r1cs_hashes::sha2_dsl::tests::dsl_relation_proves_and_verifies_with_walk_adapter -- --ignored --exact
-          cargo test --release -p flock-prover --lib r1cs_hashes::blake3_dsl::tests::dsl_matches_legacy_relation_and_witness -- --ignored --exact
+          cargo test --release -p flock-prover --lib r1cs_hashes::blake3_dsl::tests::dsl_outputs_and_walks_match_reference -- --ignored --exact
           cargo test --release -p flock-prover --lib r1cs_hashes::blake3_dsl::tests::dsl_relation_proves_and_verifies_with_walk_adapter -- --ignored --exact

@@ -98,7 +98,9 @@ impl SelectByte<Var> {
                     .collect();
                 for selector in offset {
                     candidates = candidates
-                        .chunks_exact(2)
+                        .as_chunks::<2>()
+                        .0
+                        .iter()
                         .map(|pair| {
                             let products = products.next().unwrap();
                             std::array::from_fn(|bit| {
